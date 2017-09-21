@@ -1,6 +1,14 @@
 var db = require('../config');
 var bcrypt = require('bcrypt-nodejs');
 var Promise = require('bluebird');
+var mongoose = require('mongoose')
+
+  var username= mongoose.Schema({
+    
+    username : {type : string, index).unique();
+    user.string('password', 100);
+
+  })
 
 var User = db.Model.extend({
   tableName: 'users',
@@ -23,3 +31,17 @@ var User = db.Model.extend({
 });
 
 module.exports = User;
+
+
+//       link.increments('id').primary();
+// db.knex.schema.hasTable('users').then(function(exists) {
+//   if (!exists) {
+//     db.knex.schema.createTable('users', function (user) {
+//       user.increments('id').primary();
+//       
+//       user.timestamps();
+//     }).then(function (table) {
+//       console.log('Created Table', table);
+//     });
+//   }
+// });
