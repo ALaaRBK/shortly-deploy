@@ -3,6 +3,13 @@ module.exports = function(grunt) {
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
     concat: {
+       options: {
+        separator: ';',
+      },
+      dist: {
+        src: ['**/*.js'],
+        dest: 'dist/built.js',
+      },
     },
 
     mochaTest: {
@@ -24,9 +31,8 @@ module.exports = function(grunt) {
     },
 
     eslint: {
-      target: [
-        // Add list of files to lint here
-      ]
+      target:
+        ["dist/built.js"]
     },
 
     cssmin: {
@@ -78,7 +84,8 @@ module.exports = function(grunt) {
 
   grunt.registerTask('build', [
   ]);
-
+  grunt.registerTask('default',
+   ['concat']);
   grunt.registerTask('upload', function(n) {
     if (grunt.option('prod')) {
       // add your production server task here
